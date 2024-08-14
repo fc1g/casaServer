@@ -12,7 +12,7 @@ import helmet from 'helmet';
 const app: Application = express();
 
 if (process.env.NODE_ENV === config.DEV) app.use(morgan('dev'));
-app.use('/uploads', express.static('public'));
+app.use(express.static('public'));
 
 app.use(json());
 app.use(

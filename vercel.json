@@ -25,8 +25,8 @@
       }
     },
     {
-      "src": "/(.+)",
-      "dest": "public/*.webp"
+      "src": "/(.+).webp",
+      "dest": "public/"
     }
   ]
 }
