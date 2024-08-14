@@ -6,7 +6,7 @@ export const uploadNewImage: RequestHandler = async (req, res) => {
   try {
     res.status(200).json({
       status: 'success',
-      path: req.file!.path,
+      path: req.file!.originalname,
     });
   } catch (err) {
     res.status(400).json({
@@ -18,7 +18,7 @@ export const uploadNewImage: RequestHandler = async (req, res) => {
 
 export const deleteImage: RequestHandler = async (req, res) => {
   try {
-    fs.unlink(`public/${(req.body as { name: string }).name}`, err => {
+    fs.unlink(`uploads/${(req.body as { name: string }).name}`, err => {
       if (err) throw new Error(`${err}`);
     });
 

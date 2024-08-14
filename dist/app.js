@@ -34,17 +34,18 @@ const express_1 = __importStar(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
+const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 if (process.env.NODE_ENV === config_1.default.DEV)
     app.use((0, morgan_1.default)('dev'));
-app.use(express_1.default.static('public'));
 app.use((0, express_1.json)());
 app.use((0, cors_1.default)({
     origin: '*',
 }));
 app.use((0, helmet_1.default)());
 app.get('/', (_, res) => res.send('Hello! Welcome to our backend server.'));
-app.use('/uploads', uploadRoutes_1.default);
+app.use('/uploads', express_1.default.static(path_1.default.join(__dirname, 'uploads')));
+app.use('/api/v1/uploads', uploadRoutes_1.default);
 app.use('/api/v1/vicinity/', vicinityPlaceRoutes_1.default);
 app.use('/api/v1/bookedDates/', bookedDateRoutes_1.default);
 exports.default = app;

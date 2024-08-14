@@ -18,7 +18,7 @@ const uploadNewImage = (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         res.status(200).json({
             status: 'success',
-            path: req.file.path,
+            path: req.file.originalname,
         });
     }
     catch (err) {
@@ -31,7 +31,7 @@ const uploadNewImage = (req, res) => __awaiter(void 0, void 0, void 0, function*
 exports.uploadNewImage = uploadNewImage;
 const deleteImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        fs_1.default.unlink(`public/${req.body.name}`, err => {
+        fs_1.default.unlink(`uploads/${req.body.name}`, err => {
             if (err)
                 throw new Error(`${err}`);
         });
