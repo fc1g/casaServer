@@ -14,6 +14,7 @@ export const uploadImage: RequestHandler = async (req, res) => {
     const image = await new Image({
       data: file.buffer,
       contentType: file.mimetype,
+      name: file.originalname,
     }).save();
 
     res.status(201).json({
