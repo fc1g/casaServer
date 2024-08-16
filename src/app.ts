@@ -22,7 +22,7 @@ app.use(
     origin: '*',
   }),
 );
-app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 
 app.get('/', (_, res) => res.send('Hello! Welcome to our backend server.'));
 
