@@ -1,11 +1,7 @@
-import dotenv from 'dotenv';
 import connectDB from './config/db';
-
 import config from './utils/config';
 
 import app from './app';
-
-dotenv.config();
 
 const mongoURI: string =
   process.env.DATABASE?.replace('<USERNAME>', process.env.USERNAME!).replace('<PASSWORD>', process.env.PASSWORD!) ||
